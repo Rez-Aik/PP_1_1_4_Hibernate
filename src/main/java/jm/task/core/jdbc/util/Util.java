@@ -17,25 +17,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 public class Util {
-    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/db1";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root";
-
-    public Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName(DB_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            System.out.println("Connected to the database successfully");
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            System.out.println("Failed to connect to the database " + e.getMessage());
-        }
-        return connection;
-    }
-
     private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
